@@ -13,9 +13,9 @@ y, the housing price, divided by $100000, ranges from 0.15 to 5.00 with an avera
 
 Approaches:
 
-1. We use L2 loss function here, which is 1/n * (y-y_hat)^2. We find the optimal direction by considering both the 
-positive and negative direction of alpha. We found the optimal step size by formula derived from this particular 
-loss function.
+1. We use L2 loss function here, which is 1/n * (y-y_hat)^2. We use coordinate descent to find the optimal direction 
+by considering both the positive and negative direction of alpha. We found the optimal step size by formula derived 
+from this particular loss function.
 
 2. We used 10 weak learners. For each feature/dimension, we sort the x values first and then find the corresponding 
 10 quantile values to be the thresholds and construct the weak learners based on that.

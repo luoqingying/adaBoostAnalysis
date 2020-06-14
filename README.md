@@ -8,8 +8,8 @@ For the nonlinear one, X ranges from 0 to 2, a total of 200 points each having 0
 We input X and get the corresponding function y, which is the label.
 
 * The second part is working with a real world data set, a California Housing Price from python sklearn package.
-X has 20640 data points, each having 8 dimensions. 
-y, the housing price, divided by $100000, ranges from 0.15 to 5.00 with an average of 2.07.
+X has 20640 data points, each having 8 dimensions. y, the housing price, divided by $100000, ranges from 0.15 to 5.00 
+with an average of 2.07.
 
 Approaches:
 
@@ -25,14 +25,16 @@ learner, which will be a piece-wise constant function. Centered the data to bett
 
 Conclusion:
 
-1. For the first part, it shows that the number of weak learners is the pivotal factor in how well you approximate 
+1. For the first part, it shows that the number of weak learners is a pivotal factor in how well you approximate 
 the function. If we don't have enough weak learners, no matter how many iterations we go, the algorithm cannot converge 
-to a good performance.
+to a good performance. Also, we are not doing any prediction right here, just approximating the function within certain 
+range of x values.
 
-2. For the second part, the algorithm drops down the error fast. We achieved a good performance with 30 iterations only.
-It will converge extremely fast in the classification problem with exponential loss also. The graph shows how each feature 
-contributes to the housing price, we can also find the most important variable by calculating variable importance. For 
-each feature, we shuffled the entries of it, and recalculated the MSE again. The one with the bigger MSE change is the one 
-with more importance.
+2. For the second part, a small MSE may not be an indication of good prediction. Since our y values are divided by 100000 
+already. Actually, both the training and testing MSE staggered around 0.4, even with iteration of 200. So it did not really 
+did a good job in prediction. Plus, the distribution of feature values in training should be representative of testing, 
+otherwise the algorithm will get confused when seeing outlier values. So the only thing worth to mention is the 
+visualization of how each feature contribute to the y values and which is the most important one.
 
-3. Comparison with linear model also shows that adaBoost is better at capturing nonlinearity in the data.
+3. Comparison with linear model also shows that adaBoost is better at capturing nonlinearity in the data, but it is also 
+well beaten by other nonlinear models.
